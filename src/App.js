@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
 function App() {
+  const list100ea = () => {
+    const items = []; // 배열 생성
+    for (let i = 0; i <= 200; i++) {
+      items.push(<li key={i}>{i}</li>); // key와 함께 배열에 <li> 요소 추가
+    }
+    return items; // 배열 반환
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <>
+        <div className="main-bg">
+          <nav className="Nav wrapper">navigation bar</nav>
+        </div>
+        <div className="main-content wrapper">
+          <div className="Content-container">content</div>
+          <aside className="Sidebar">
+            sidebar
+            {list100ea()}
+            <ul></ul>
+          </aside>
+        </div>
+      </>
     </div>
   );
 }

@@ -1,4 +1,73 @@
+/* 공통 */
+.wrapper {
+  /* max-width: 1200px; */
+  min-width: 800px;
+  max-width: 1800px;
+  max-height: 1200px;
+  margin: 0 auto;
+  /* padding: 0 4%; */
+  border: solid 1px black;
+}
+
 .App {
+  text-align: center;
+  /* margin-left: auto;
+  margin-right: auto; */
+}
+
+.main-bg {
+  background-color: green;
+  height: 50px;
+}
+
+.Nav {
+  /* padding-top: 10px;
+  padding-left: 10px; */
+  top: 0;
+  width: 100vw;
+  height: 50px;
+  background-color: yellow;
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: stretch; /* 아이템들의 높이를 컨테이너에 맞춤 */
+}
+
+.logo-section {
+  /* margin-top: 10px; */
+  /* margin-left: 1%; */
+  width: 100px;
+  height: 30px;
+  background-color: black;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* 추가: 가로 방향 가운데 정렬 */
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Sidebar {
+  background: skyblue;
+  width: 200px;
+  min-height: 600px;
+  order: 1;
+  overflow-y: auto;
+}
+
+.Content-container {
+  background: #e3e3e3;
+  width: 90%;
+  min-height: 600px;
+  order: 2;
+}
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +104,26 @@
   to {
     transform: rotate(360deg);
   }
+} */
+/* 스크롤바 전체 스타일 */
+::-webkit-scrollbar {
+  width: 10px; /* 스크롤바의 너비 */
+  height: 10px; /* 수평 스크롤바의 높이 */
+}
+
+/* 스크롤바 트랙 (바탕) 스타일 */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* 트랙의 배경 색상 */
+  border-radius: 10px; /* 트랙의 모서리 둥글기 */
+}
+
+/* 스크롤바 핸들 (움직이는 부분) 스타일 */
+::-webkit-scrollbar-thumb {
+  background: #888; /* 핸들의 배경 색상 */
+  border-radius: 10px; /* 핸들의 모서리 둥글기 */
+}
+
+/* 스크롤바 핸들:hover 시 스타일 */
+::-webkit-scrollbar-thumb:hover {
+  background: green; /* 핸들의 배경 색상 (hover 상태) */
 }
