@@ -1,0 +1,328 @@
+/* 
+1.
+display=swap: 폰트 로딩 전략을 지정한다.
+ swap은 폰트가 로드될 때까지 폴백(fallback)폰트를 보여주고 로드되면 교체한다. */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+
+
+/* 
+2.
+:root는 CSS에서 문서 트리의 루트 요소를 가리킨다.
+ HTML에서는 <html> 요소에 해당한다.
+  :root에 선언된 CSS 변수(또는 사용자 정의 속성)는 전역 범위를 갖게 되어
+   문서의 어느 곳에서든 사용할 수 있다 */
+
+:root {
+    --main-color: #DD2F6E;
+    --color-dark: #1D2231;
+    --text-grey: #8390A2;
+}
+
+/* 3.
+리셋 코드.
+- padding과 magrin을 0으로 해준다.
+- box-sizing: border-box는 요소의 너비와 높이가 패딩과 테두리를 포함한 값으로 계산한다.
+- list-style-type: none은 ol과 ul의 기본 스타일(숫자, 점)을 없애준다.
+- font-family: 'Poppins', sans-serf 기본 폰트를 Poppins로 설정한다. 못찾는 경우 san-serif를 사용한다
+기본 패딩과 마진 없애준다.
+ */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+/* ----------------- 위 까지가 거의 기본 세팅이라고 보면 된다----------- */
+
+/*4.
+ 사이드바 */
+.sidebar {
+    width: 345px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: var(--main-color);
+    z-index: 100;
+}
+
+/* 로고 있는 부분 */
+.sidebar-brand {
+    height: 90px;
+    /* 상우하좌 */
+    padding: 1rem 0rem 1rem 2rem;
+    color: #fff;
+}
+
+/* 6.
+ 사이드 바 내부 요소들 설정 */
+
+.sidebar-brand span {
+    /* 'inline-block' 요소는 텍스트처럼 같은 줄에 배치될 수 있는 'inline' 요소의 특성과, 너비(width), 높이(height), 패딩(padding), 마진(margin)을 지정할 수 있는 'block' 요소의 특성을 모두 가진다.
+ 즉, <span> 요소는 다른 요소들과 같은 줄에 나란히 배치되면서도, 블록 레벨 요소처럼 여백과 크기를 조절할 수 있게 된다.*/
+    display: inline-block;
+    /* 이 속성은 <span> 요소의 오른쪽에 1rem 만큼의 내부 여백(padding)을 추가한다. */
+    padding-right: 1rem;
+
+}
+
+.sidebar-menu {
+    margin-top: 1rem;
+}
+
+/* 목록에 대해서 위 아래, 좌측 띄어주기*/
+.sidebar-menu li {
+    width: 100%;
+    margin-bottom: 1.7rem;
+    padding-left: 1rem;
+}
+
+/* 목록 글자에 대해서 */
+.sidebar-menu a {
+    padding-left: 1rem;
+    display: block;
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+/* 활성화된 메뉴에 대한 효과 */
+.sidebar-menu a.active {
+    background-color: #fff;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    color: var(--main-color);
+    border-radius: 30px 0px 0px 30px;
+}
+
+.sidebar-menu a span:first-child {
+    /* a태그 내부의 span태그 중 첫 번째 녀석에 대해서(아이콘) */
+    font-size: 1.5rem;
+    padding-right: 1.1rem;
+}
+
+
+/*
+5. 
+ 메인 컨텐츠 (메인 컨텐츠 먼저 옆으로 비켜 놓고 사이드 바 작업 끝내고 다시 돌아왔다.*/
+.main-content {
+    margin-left: 345px;
+}
+
+/* 7. 메인 컨텐트 윗부분 정리 */
+/* 7-1 */
+header {
+    display: flex;
+    /* 자식 요소들을 동일한 간격으로 나눠서 배치 */
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    /* 2px 2px: 그림자의 수평 오프셋: 양수이므로 우측하단으로 그림자가 떨어진다.
+    5px: 그림자의 퍼짐 반경이다. 클수록 부드럽고 넓게 퍼진다.
+    rgba(0, 0, 0, 0.2): 적,녹,청,투명도:여기서는 투명도가 20%인 검은 그림자.
+     */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    left: 345px;
+    /* 반드시 연산자(-) 주변에 공백이 있어야 한다. 100%-345px하면 제대로 인식 못함. */
+    width: calc(100% - 345px);
+    top: 0;
+    z-index: 100;
+    background-color: #fff;
+}
+
+header h2 {
+    color: #222;
+}
+
+header label span {
+    font-size: 1.7rem;
+    padding-right: 1rem;
+}
+
+/* 7-2 검색창 주변부 둥글게*/
+.search-wrapper {
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    height: 50px;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    /* 삐져나온 부분 안 보이게 */
+    overflow-x: hidden;
+}
+
+/* 7-4 아이콘 부분 가운데로 오도록*/
+.search-wrapper span {
+    display: inline-block;
+    /* 상하0, 좌우 1rem씩 내부 간격 */
+    padding: 0rem 1rem;
+    font-size: 1.5rem;
+}
+
+/* 7-3 */
+.search-wrapper input {
+    height: 100%;
+    padding: .5rem;
+    border: none;
+    outline: none;
+}
+
+/* 8. */
+.user-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.user-wrapper img {
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.user-wrapper small {
+    display: inline-block;
+    color: var(--text-grey);
+    margin-top: -10px !important;
+}
+
+
+
+/*9.
+메인커텐트 헤더 아래: 본문  */
+main {
+    /* 헤더 위로 올라가지 않도록 마진 준다. */
+    margin-top: 85px;
+    padding: 2rem 1.5rem;
+    background-color: #f0f0f0;
+    min-height: calc(100vh - 90px);
+
+
+}
+
+/* 10. */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2rem;
+    margin-top: 1rem;
+}
+
+.card-single {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+
+.card-single div:last-child span {
+    font-size: 3rem;
+    color: var(--main-color);
+}
+
+.card-single div:first-child span {
+    color: var(--text-grey)
+}
+
+.card-single:last-child {
+    background-color: var(--main-color);
+}
+
+.card-single:last-child h1,
+.card-single:last-child div:first-child span,
+.card-single:last-child div:last-child span {
+    color: #fff;
+}
+
+
+/* 본문 그리드 */
+.recent-grid {
+    margin-top: 3.5rem;
+    display: grid;
+    /* 첫 번째 열이 너비의 67%, 남은 열은 자동*/
+    grid-template-columns: 67% auto;
+    /* grid-gap이 gap으로 대체됨 */
+    gap: 2rem;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.card-header,
+.card-body {
+    padding: 1rem;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* 헤더와 바디를 나누는 경계 */
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.card-header button {
+    background-color: var(--main-color);
+    border-radius: 10px;
+    color: #fff;
+    font-size: .8rem;
+    padding: .5rem 1rem;
+    border: 1px solid var(--main-color);
+
+}
+
+table {
+    /* border-collapse: collapse;를 사용하는 주된 이유는 테이블의 외관을 깔끔하게 만들고,
+     셀 경계 사이의 불필요한 간격을 제거하여 더 조밀하고 일관된 테이블 레이아웃을 구성하고자 할 때이다.
+     이는 데이터가 밀집된 테이블을 표시할 때 특히 유용. */
+    border-collapse: collapse;
+}
+
+thead tr {
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+thead td {
+    font-weight: 700;
+}
+
+td {
+    padding: .5rem;
+    font-size: .9rem;
+    color: #222;
+}
+
+
+
+td .status {
+    /* display: inline-block을 줘야 색이 보임 */
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+tr td:last-child {
+    display: flex;
+    align-items: center;
+}
+
+.status.purple {
+    background-color: rebeccapurple;
+}
+
+.status.pink {
+    background-color: deeppink;
+}
+
+.status.orange {
+    background-color: orangered;
+}
