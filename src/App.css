@@ -24,7 +24,8 @@
   /* padding-top: 10px;
   padding-left: 10px; */
   top: 0;
-  width: 100vw;
+  /* width: 100vw; */
+  width: 100%;
   height: 50px;
   background-color: yellow;
 }
@@ -32,7 +33,8 @@
 .main-content {
   display: flex;
   justify-content: center;
-  align-items: stretch; /* 아이템들의 높이를 컨테이너에 맞춤 */
+  align-items: stretch;
+  /* 아이템들의 높이를 컨테이너에 맞춤 */
 }
 
 .logo-section {
@@ -46,7 +48,8 @@
 .flex-container {
   display: flex;
   flex-direction: row;
-  justify-content: center; /* 추가: 가로 방향 가운데 정렬 */
+  justify-content: center;
+  /* 추가: 가로 방향 가운데 정렬 */
 
   margin-left: auto;
   margin-right: auto;
@@ -107,23 +110,30 @@
 } */
 /* 스크롤바 전체 스타일 */
 ::-webkit-scrollbar {
-  width: 10px; /* 스크롤바의 너비 */
-  height: 10px; /* 수평 스크롤바의 높이 */
+  width: 10px;
+  /* 스크롤바의 너비 */
+  height: 10px;
+  /* 수평 스크롤바의 높이 */
 }
 
 /* 스크롤바 트랙 (바탕) 스타일 */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; /* 트랙의 배경 색상 */
-  border-radius: 10px; /* 트랙의 모서리 둥글기 */
+  background: #f1f1f1;
+  /* 트랙의 배경 색상 */
+  border-radius: 10px;
+  /* 트랙의 모서리 둥글기 */
 }
 
 /* 스크롤바 핸들 (움직이는 부분) 스타일 */
 ::-webkit-scrollbar-thumb {
-  background: #888; /* 핸들의 배경 색상 */
-  border-radius: 10px; /* 핸들의 모서리 둥글기 */
+  background: #888;
+  /* 핸들의 배경 색상 */
+  border-radius: 10px;
+  /* 핸들의 모서리 둥글기 */
 }
 
 /* 스크롤바 핸들:hover 시 스타일 */
 ::-webkit-scrollbar-thumb:hover {
-  background: green; /* 핸들의 배경 색상 (hover 상태) */
+  background: green;
+  /* 핸들의 배경 색상 (hover 상태) */
 }
