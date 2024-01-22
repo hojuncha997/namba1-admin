@@ -48,7 +48,9 @@ display=swap: 폰트 로딩 전략을 지정한다.
     top: 0;
     height: 100%;
     background-color: var(--main-color);
+    /* background-color: #fff; */
     z-index: 100;
+    transition: width 300ms;
 }
 
 /* 로고 있는 부분 */
@@ -105,11 +107,42 @@ display=swap: 폰트 로딩 전략을 지정한다.
     padding-right: 1.1rem;
 }
 
+/* 체크박스 나중에 추가했음 나중에 해주자.(인접형제 결합자 사용 sidebar랑 바로 붙어 있음)*/
+#nav-toggle:checked+.sidebar {
+    width: 70px;
+}
+
+/* 이처럼 형제 태그 내부의 자손 태그들도 조정할 수 있다. */
+#nav-toggle:checked+.sidebar .sidebar-brand,
+#nav-toggle:checked+.sidebar li a {
+    padding-left: 1rem;
+    text-align: center;
+}
+
+#nav-toggle:checked+.sidebar li a {
+    padding-left: 0rem;
+}
+
+#nav-toggle:checked+.sidebar .sidebar-brand h2 span:last-child,
+#nav-toggle:checked+.sidebar li a span:last-child {
+    display: none;
+}
+
+/* 일반형제 결합자~를 사용해서 같은 부모의 뒤에 있는 태그를 조정할 수 있다 */
+#nav-toggle:checked~.main-content {
+    margin-left: 70px;
+}
+
+#nav-toggle:checked~.main-content header {
+    width: calc(100% - 70px);
+    left: 70px;
+}
 
 /*
 5. 
  메인 컨텐츠 (메인 컨텐츠 먼저 옆으로 비켜 놓고 사이드 바 작업 끝내고 다시 돌아왔다.*/
 .main-content {
+    transition: margin-left 300ms;
     margin-left: 345px;
 }
 
@@ -132,7 +165,9 @@ header {
     top: 0;
     z-index: 100;
     background-color: #fff;
+    transition: left 300ms;
 }
+
 
 header h2 {
     color: #222;
@@ -243,8 +278,8 @@ main {
 .recent-grid {
     margin-top: 3.5rem;
     display: grid;
-    /* 첫 번째 열이 너비의 67%, 남은 열은 자동*/
-    grid-template-columns: 67% auto;
+    /* 첫 번째 열이 너비의 65%, 남은 열은 자동*/
+    grid-template-columns: 65% auto;
     /* grid-gap이 gap으로 대체됨 */
     gap: 2rem;
 }
@@ -325,4 +360,236 @@ tr td:last-child {
 
 .status.orange {
     background-color: orangered;
+}
+
+/* 여기서부터 반응형 */
+
+.table-responsive {
+    width: 100%;
+    /* overflow-x 설정을 해주지 않으면 가로로 좁혔을 때 기존 내용들이 다른 내용을 침범함*/
+    overflow-x: auto;
+}
+
+.customer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem .7rem;
+}
+
+/* new Customer 쪽 */
+.info {
+    display: flex;
+    align-items: center;
+}
+
+.info img {
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.info h4 {
+    font-size: .8rem;
+    font-weight: 600;
+    color: #222;
+}
+
+.info small {
+    font-weight: 600;
+    color: var(--text-grey)
+}
+
+.contact span {
+    font-size: 1.2rem;
+    display: inline-block;
+    margin-left: .5rem;
+    color: var(--main-color)
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .sidebar {
+        width: 70px;
+    }
+
+    .sidebar .sidebar-brand,
+    .sidebar li a {
+        padding-left: 1rem;
+        text-align: center;
+    }
+
+    .sidebar li a {
+        padding-left: 0rem;
+    }
+
+    .sidebar .sidebar-brand h2 span:last-child,
+    .sidebar li a span:last-child {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 70px;
+    }
+
+    .main-content header {
+        width: calc(100% - 70px);
+        left: 70px;
+    }
+
+    /* -------- */
+
+}
+
+@media only screen and (max-width: 960px) {
+
+    /* 해당 요소 내부의 컨텐츠를 3열 그리드로 표시하겠다는 의미.
+     각 열은 사용 가능한 공간의 동일한 비율(1 fraction)을 차지.
+     repeat() 함수는 그리드 레이아웃에서 컬럼(column)이나 로우(row)의 사이즈를 반복해서 정의할 때 사용됨.
+      */
+    .cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .recent-grid {
+        grid-template-columns: 60% 40%;
+    }
+
+    .sidebar {
+        left: -100% !important;
+    }
+
+
+    header h2 {
+        display: flex;
+        align-items: center;
+    }
+
+    header h2 label {
+        display: inline-block;
+        background-color: var(--main-color);
+        padding-left: 0rem;
+        margin-right: 1rem;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center !important;
+    }
+
+    header h2 span {
+        text-align: center;
+        padding-right: 0rem;
+    }
+
+    .main-content {
+        width: 100%;
+        margin-left: 0rem;
+    }
+
+    header {
+        width: 100% !important;
+        left: 0 !important;
+
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .recent-grid {
+        grid-template-columns: 100%;
+    }
+
+    .search-wrapper {
+        display: none;
+    }
+
+    /* --- */
+    header h2 {
+        display: flex;
+        align-items: center;
+    }
+
+    header h2 label {
+        display: inline-block;
+        background-color: var(--main-color);
+        padding-left: 0rem;
+        margin-right: 1rem;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center !important;
+    }
+
+    header h2 span {
+        text-align: center;
+        padding-right: 0rem;
+    }
+
+    header h2 {
+        font-size: 1.1rem;
+    }
+
+    .main-content {
+        width: 100%;
+        margin-left: 0rem;
+    }
+
+    header {
+        width: 100% !important;
+        left: 0 !important;
+
+    }
+
+    #nav-toggle:checked+.sidebar {
+        left: 0 !important;
+        z-index: 100;
+        width: 345px;
+    }
+
+
+
+    #nav-toggle:checked+.sidebar .sidebar-brand,
+    #nav-toggle:checked+.sidebar li {
+        padding-left: 2rem;
+        text-align: left;
+    }
+
+    #nav-toggle:checked+.sidebar:hover li a {
+        padding-left: 1rem;
+    }
+
+    #nav-toggle:checked+.sidebar .sidebar-brand h2 span:last-child,
+    #nav-toggle:checked+.sidebar li a span:last-child {
+        /* 이렇게 해야 글씨가 올라와 붙음 */
+        display: inline;
+    }
+
+    #nav-toggle:checked~.main-content {
+        margin-left: 0rem !important;
+    }
+
+}
+
+@media only screen and (max-width: 560px) {
+
+    .cards {
+        grid-template-columns: 100%;
+    }
+
+    .recent-grid {
+        grid-template-columns: 100%;
+    }
+
+    .search-wrapper {
+        display: none;
+    }
 }
