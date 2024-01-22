@@ -9,7 +9,9 @@ const SidebarStyle = styled.aside`
   // border-right: 1px solid var(--text-grey);
   box-shadow: 2px 0 5px -1px rgba(0, 0, 0, 0.3);
   z-index: 99;
+  padding-top: 50px;
   font-size: 30px;
+  //   position: fixed;
 `;
 
 const Sidebar = ({ menus }) => {

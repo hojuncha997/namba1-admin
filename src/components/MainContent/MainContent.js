@@ -6,15 +6,15 @@ const MainContentStyle = styled.div`
   /* min-height: 600px; */
   order: 2;
   overflow-y: auto;
+  margin-left: 50px;
+  margin-top: 50px;
+  font-size: 30px;
 `;
 
 const MainContent = ({ children }) => {
   return (
     <>
       <MainContentStyle>
-        <div>{children}</div>
-        <div>{children}</div>
-        <div>{children}</div>
         <div>{children}</div>
       </MainContentStyle>
     </>
