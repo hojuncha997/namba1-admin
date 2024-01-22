@@ -6,7 +6,7 @@ const UpperNavStyle = styled.div`
   top: 0;
   width: 100%;
   height: 50px;
-  // background-color: var(--main-color);
+  font-size: 1rem;
   background-color: #fff;
 
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
@@ -25,11 +25,37 @@ const LogoStyle = styled.div`
   margin-top: 5px;
 `;
 
-const RightMenu = styled.div`
+const MainCategoryContainer = styled.div`
+  // display: inline-block;
+  // margin-right: 20px;
+  display: flex;
+  // align-items: center;
+  justify-content: center;
+`;
+
+const MainCategoryItem = styled.div`
+  margin-right: 30px;
+  &last-child {
+    margin-right: 0;
+  }
+`;
+
+const RightMenuContainer = styled.div`
   margin-right: 30px;
 `;
 
 const UpperNav = ({ title }) => {
+  const mainCategories = [
+    "대시보드",
+    "회원관리",
+    "등록매물",
+    "매매신청",
+    "정산관리",
+    "플랫폼 관리",
+    "알림/문자",
+    "통계",
+  ];
+
   return (
     <UpperNavStyle>
       <LogoStyle>
@@ -37,7 +63,17 @@ const UpperNav = ({ title }) => {
           <img src={logoImage} width="120px" alt="Logo" />
         </a>
       </LogoStyle>
-      <RightMenu>{title}</RightMenu>
+      <MainCategoryContainer>
+        {mainCategories.map((category, index) => {
+          return (
+            <MainCategoryItem key={index}>
+              <a href="https://naver.com">{category}</a>
+            </MainCategoryItem>
+          );
+        })}
+      </MainCategoryContainer>
+
+      <RightMenuContainer>알림 프로필 로그아웃</RightMenuContainer>
     </UpperNavStyle>
   ); // 수정: JSX 형태로 컴포넌트 반환
 };

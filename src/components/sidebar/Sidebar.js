@@ -10,7 +10,7 @@ const SidebarStyle = styled.aside`
   box-shadow: 2px 0 5px -1px rgba(0, 0, 0, 0.3);
   z-index: 99;
   padding-top: 50px;
-  font-size: 30px;
+  font-size: 1rem;
   //   position: fixed;
 `;
 

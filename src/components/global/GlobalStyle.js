@@ -20,6 +20,20 @@ const GlobalStyle = createGlobalStyle`
 
   border-collapse: collapse;
 
+  a {
+    color: inherit; // 부모 요소의 색상을 상속받음
+    text-decoration: none; // 밑줄 제거
+
+    &:active, &:focus {
+      color: inherit; // 호버, 액티브, 포커스 상태에서도 색상 유지
+      text-decoration: none; //액티브, 포커스 상태에서도 밑줄 제거
+    }
+
+    &:hover {
+      color: red;
+    }
+  }
+
 }
 `;
 
