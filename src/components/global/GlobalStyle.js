@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
     --main-color: #FFDD00;
     --color-dark: #1D2231;
     --text-grey: #8390A2;
+    --namba1-yellow: #FFDD00;
 }
 
 * {

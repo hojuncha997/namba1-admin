@@ -7,7 +7,6 @@
 
   /* padding: 0 4%; */
   /* border: solid 1px black; */
-
 }
 
 .App {
@@ -15,7 +14,6 @@
   /* margin-left: auto;
   margin-right: auto; */
 }
-
 
 .main-content {
   margin-top: 50px;
@@ -42,7 +40,6 @@
   margin-left: auto;
   margin-right: auto;
 }
-
 
 .Content-container {
   background: #e3e3e3;
@@ -118,3 +115,31 @@
   background: green;
   /* 핸들의 배경 색상 (hover 상태) */
 }
+/* 
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+
+  width: 500px;
+  height: 300px;
+  
+  background-color: var(#fff);
+  margin-top: 30vh;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  border: 1px solid grey;
+  padding: 30px;
+}
+
+.credentials {
+  display: flex;
+  flex-direction: column; 
+}
+
+.inputField {
+  margin-bottom: 10px; 
+} */

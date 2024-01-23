@@ -15,6 +15,7 @@ const UpperNavStyle = styled.div`
   color: black;
   z-index: 200;
   display: flex;
+  // flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
 `;
