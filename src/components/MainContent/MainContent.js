@@ -7,10 +7,10 @@ const MainContentStyle = styled.div`
   /* min-height: 600px; */
   order: 2;
   overflow-y: auto;
-  margin-left: 30px;
+  margin-left: 375px;
   margin-right: 30px;
   margin-top: 50px;
-  font-size: 30px;
+  font-size: 20px;
 `;
 
 const MainContentWrapper = styled.div`
@@ -22,15 +22,22 @@ const MainContentWrapper = styled.div`
 `;
 
 const MainContentHeaderStyle = styled.div`
+  height: 100px;
   background-color: tomato;
   margin-bottom: 30px;
 `;
 const MainContentSectionStyle = styled.section`
+  display: flex; // 또는 grid
+  flex-direction: column;
+  overflow-y: auto; // 내용이 많을 경우 스크롤
+
   background-color: deepskyblue;
   margin-bottom: 30px;
 `;
 const MainContentFooterStyle = styled.div`
   background-color: lightgreen;
+  // position: fixed;
+  height: 30px;
 `;
 
 const MainContent = ({ children }) => {
@@ -41,7 +48,26 @@ const MainContent = ({ children }) => {
           {/* <div>{children}</div> */}
           {/* <Login></Login> */}
           <MainContentHeaderStyle>{children}</MainContentHeaderStyle>
-          <MainContentSectionStyle>Section</MainContentSectionStyle>
+          <MainContentSectionStyle>
+            <div>Section</div>
+            <div>Section</div>
+            <div>Section</div>
+            <div>Section</div>
+            <div>Section</div>
+            <div>Section</div>
+            <div>Section</div>
+            <div>Section</div>
+            <div>Section</div>
+            <div>Section</div>
+            <div>Section</div>
+            <div>Section</div>
+            <div>Section</div>
+            <div>Section</div>
+            <div>Section</div>
+            <div>Section</div>
+            <div>Section</div>
+            <div>Section</div>
+          </MainContentSectionStyle>
           <MainContentFooterStyle>footer</MainContentFooterStyle>
         </MainContentWrapper>
       </MainContentStyle>

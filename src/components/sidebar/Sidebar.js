@@ -11,7 +11,8 @@ const SidebarStyle = styled.aside`
   z-index: 99;
   padding-top: 50px;
   font-size: 1rem;
-  //   position: fixed;
+  position: fixed;
+  left: 0;
 `;
 
 const Sidebar = ({ menus }) => {
