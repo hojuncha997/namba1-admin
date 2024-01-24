@@ -13,10 +13,38 @@ const SidebarStyle = styled.aside`
   font-size: 1rem;
   position: fixed;
   left: 0;
+
+  display: flex;
+  justify-content: center;
+`;
+
+const SubMenuConainer = styled.div`
+  // border: 1px solid black;
+  // margin-left: 30px;
 `;
 
 const Sidebar = ({ menus }) => {
-  return <SidebarStyle>{menus}</SidebarStyle>;
+  return (
+    <SidebarStyle>
+      <SubMenuConainer>
+        <div>
+          <a href="https://www.naver.com">팝니다 등록</a>
+        </div>
+        <div>- 개인소형</div>
+        <div>- 개인대형</div>
+        <div>- 법인매매</div>
+        <div>- 법인임대</div>
+        <div>- 주선면허</div>
+        <div style={{ borderBottom: "1px solid black" }}></div>
+        <div>삽니다 등록</div>
+        <div>- 개인소형</div>
+        <div>- 개인중형</div>
+        <div>- 개인대형</div>
+        <div>- 법인매매</div>
+        <div>- 주선면허</div>
+      </SubMenuConainer>
+    </SidebarStyle>
+  );
 };
 
 export default Sidebar;

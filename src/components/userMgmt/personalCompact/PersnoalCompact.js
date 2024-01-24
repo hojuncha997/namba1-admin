@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Login from "../login/Login";
 
 const MainContentStyle = styled.div`
   background: #fff;
@@ -43,14 +42,13 @@ const MainContentFooterStyle = styled.div`
   height: 30px;
 `;
 
-const MainContent = ({ children }) => {
+const PersonalCompact = ({ children }) => {
   return (
     <>
       <MainContentStyle>
         <MainContentWrapper>
-          {/* <div>{children}</div> */}
-          {/* <Login></Login> */}
-          <MainContentHeaderStyle>{children}</MainContentHeaderStyle>
+          {/* <MainContentHeaderStyle>{children}</MainContentHeaderStyle> */}
+          <MainContentHeaderStyle>개인 소형</MainContentHeaderStyle>
           <MainContentSectionStyle>
             <div>Section</div>
             <div>Section</div>
@@ -78,4 +76,4 @@ const MainContent = ({ children }) => {
   );
 };
 
-export default MainContent;
+export default PersonalCompact;
