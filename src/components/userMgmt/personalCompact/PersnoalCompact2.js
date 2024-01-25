@@ -50,16 +50,14 @@ const PersonalCompact = ({ children }) => {
           {/* <MainContentHeaderStyle>{children}</MainContentHeaderStyle> */}
           <MainContentHeaderStyle>개인 소형</MainContentHeaderStyle>
           <MainContentSectionStyle>
+            <div>PersnoalCompact2</div>
+            <div>PersnoalCompact2</div>
+            <div>PersnoalCompact2</div>
+            <div>PersnoalCompact2</div>
+            <div>PersnoalCompact2</div>
+            <div>PersnoalCompact2</div>
             <div>Section</div>
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section!!!!!!!!!!!!!!!!!!!!!!!!!!!</div>
+            <div>Section2222222222222222222222222222222222222222222222222</div>
             <div>Section</div>
             <div>Section</div>
             <div>Section</div>
