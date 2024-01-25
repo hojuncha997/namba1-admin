@@ -1,6 +1,8 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import { PATH_MEMBER } from "../../../routes/paths";
+import PersnoalCompact2 from "./PersnoalCompact2";
+
 const MainContentStyle = styled.div`
   background: #fff;
   width: 100%;
@@ -46,14 +48,23 @@ const MainContentFooterStyle = styled.div`
 const PersonalCompact = ({ children }) => {
   return (
     <>
+      <Routes>
+        <Route path="/hi" element={<PersnoalCompact2 />} />
+        {/* 다른 라우트 설정 */}
+      </Routes>
       <MainContentStyle>
         <MainContentWrapper>
           {/* <MainContentHeaderStyle>{children}</MainContentHeaderStyle> */}
           <MainContentHeaderStyle>개인 소형</MainContentHeaderStyle>
           <MainContentSectionStyle>
-            <Link to={PATH_MEMBER.root}>
+            <Link to={PATH_MEMBER.root} element>
               <div>Section-----</div>
             </Link>
+
+            <Link to="hi" element={<PersnoalCompact2 />}>
+              프로필 페이지로 이동
+            </Link>
+
             <div>Section</div>
             <div>Section</div>
             <div>Section</div>
