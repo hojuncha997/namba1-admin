@@ -1,5 +1,6 @@
 import styled from "styled-components";
-
+import { Link } from "react-router-dom";
+import { PATH_MEMBER } from "../../../routes/paths";
 const MainContentStyle = styled.div`
   background: #fff;
   width: 100%;
@@ -50,7 +51,9 @@ const PersonalCompact = ({ children }) => {
           {/* <MainContentHeaderStyle>{children}</MainContentHeaderStyle> */}
           <MainContentHeaderStyle>개인 소형</MainContentHeaderStyle>
           <MainContentSectionStyle>
-            <div>Section</div>
+            <Link to={PATH_MEMBER.root}>
+              <div>Section-----</div>
+            </Link>
             <div>Section</div>
             <div>Section</div>
             <div>Section</div>

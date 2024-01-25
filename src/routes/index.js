@@ -62,7 +62,7 @@ export default function Router() {
     // member
     {
       path: PATH_MEMBER.root,
-      element: <Navigate to={PATH_MEMBER.general} />,
+      element: <Navigate to={MemberMgmt} />,
 
       //  member 만들어 놓는 곳까지 했음. 여기에서부터 작업하면 됨. paths작업 했고, element도 했으니 이제 어디에 하나 메뉴 만들어서 Link걸어서 이동하는지 확인하면 됨.
     },
