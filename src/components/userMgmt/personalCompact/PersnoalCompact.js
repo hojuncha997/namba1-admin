@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import { PATH_MEMBER } from "../../../routes/paths";
 import PersnoalCompact2 from "./PersnoalCompact2";
 
@@ -9,9 +9,8 @@ const MainContentStyle = styled.div`
   /* min-height: 600px; */
   order: 2;
   overflow-y: auto;
-  margin-left: 375px;
   margin-right: 30px;
-  margin-top: 50px;
+  // margin-top: 50px;
   font-size: 20px;
 `;
 
@@ -36,7 +35,7 @@ const MainContentSectionStyle = styled.section`
   flex-direction: column;
   overflow-y: auto; // 내용이 많을 경우 스크롤
 
-  background-color: deepskyblue;
+  // background-color: deepskyblue;
   margin-bottom: 30px;
 `;
 const MainContentFooterStyle = styled.div`
@@ -46,42 +45,38 @@ const MainContentFooterStyle = styled.div`
 `;
 
 const PersonalCompact = ({ children }) => {
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
+
   return (
     <>
-      <Routes>
+      {/* <Routes>
         <Route path="/hi" element={<PersnoalCompact2 />} />
-        {/* 다른 라우트 설정 */}
-      </Routes>
+      </Routes> */}
+
       <MainContentStyle>
         <MainContentWrapper>
           {/* <MainContentHeaderStyle>{children}</MainContentHeaderStyle> */}
-          <MainContentHeaderStyle>개인 소형</MainContentHeaderStyle>
+          <MainContentHeaderStyle>멤버</MainContentHeaderStyle>
           <MainContentSectionStyle>
-            <Link to={PATH_MEMBER.root} element>
+            {/* <Link to={PATH_MEMBER.root} element>
               <div>Section-----</div>
             </Link>
+
+            <div onClick={() => handleNavigate(PATH_MEMBER.root)}>
+              Section-----
+            </div>
 
             <Link to="hi" element={<PersnoalCompact2 />}>
               프로필 페이지로 이동
             </Link>
-
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section!!!!!!!!!!!!!!!!!!!!!!!!!!!</div>
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section</div>
+ */}
+            <div onClick={() => handleNavigate(PATH_MEMBER.profile)}>
+              프로필 페이지로 이동
+            </div>
           </MainContentSectionStyle>
           <MainContentFooterStyle>footer</MainContentFooterStyle>
         </MainContentWrapper>

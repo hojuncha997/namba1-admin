@@ -50,6 +50,7 @@ export const PATH_MEMBER = {
   general: {
     member: path(ROOTS_MEMBER, "/member"),
   },
+  profile: "/profile",
 };
 
 // 대시보드

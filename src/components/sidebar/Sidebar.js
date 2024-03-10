@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const SidebarStyle = styled.aside`
   background: #fff;
-  width: 345px;
+  width: 15%;
   height: calc(100vh - 50px);
   order: 1;
   //   overflow-y: auto;

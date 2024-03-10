@@ -20,7 +20,12 @@ const Loadable = (Component) => (props) =>
 // );
 
 // member
-export const MemberMgmt = Loadable(
+
+export const PersnoalCompact = Loadable(
+  lazy(() => import("../components/userMgmt/personalCompact/PersnoalCompact"))
+);
+
+export const PersnoalCompact2 = Loadable(
   lazy(() => import("../components/userMgmt/personalCompact/PersnoalCompact2"))
 );
 

@@ -1,5 +1,6 @@
 import styled from "styled-components"; // 수정: {styled} -> styled
 import logoImage from "../../assets/images/namba-logo-100.png"; // 이미지를 import
+import { useNavigate } from "react-router-dom";
 
 const UpperNavStyle = styled.div`
   // 수정: styled.div를 사용하여 div 요소에 스타일 적용
@@ -45,17 +46,17 @@ const RightMenuContainer = styled.div`
   margin-right: 30px;
 `;
 
+const mainCategories = [
+  { label: "멤버", path: "/member" },
+  { label: "프로필", path: "/profile" },
+];
+
 const UpperNav = ({ title }) => {
-  const mainCategories = [
-    "대시보드",
-    "회원관리",
-    "등록매물",
-    "매매신청",
-    "정산관리",
-    "플랫폼 관리",
-    "알림/문자",
-    "통계",
-  ];
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
 
   return (
     <UpperNavStyle>
@@ -68,7 +69,10 @@ const UpperNav = ({ title }) => {
         {mainCategories.map((category, index) => {
           return (
             <MainCategoryItem key={index}>
-              <a href="https://naver.com">{category}</a>
+              <div onClick={() => handleNavigate(category.path)}>
+                {category.label}
+              </div>
+              {/* {category.label} */}
             </MainCategoryItem>
           );
         })}

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const MainContentStyle = styled.div`
   background: #fff;
@@ -6,9 +7,8 @@ const MainContentStyle = styled.div`
   /* min-height: 600px; */
   order: 2;
   overflow-y: auto;
-  margin-left: 375px;
   margin-right: 30px;
-  margin-top: 50px;
+  // margin-top: 50px;
   font-size: 20px;
 `;
 
@@ -33,7 +33,7 @@ const MainContentSectionStyle = styled.section`
   flex-direction: column;
   overflow-y: auto; // 내용이 많을 경우 스크롤
 
-  background-color: deepskyblue;
+  // background-color: deepskyblue;
   margin-bottom: 30px;
 `;
 const MainContentFooterStyle = styled.div`
@@ -43,29 +43,20 @@ const MainContentFooterStyle = styled.div`
 `;
 
 const PersonalCompact = ({ children }) => {
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
+
   return (
     <>
       <MainContentStyle>
         <MainContentWrapper>
           {/* <MainContentHeaderStyle>{children}</MainContentHeaderStyle> */}
-          <MainContentHeaderStyle>개인 소형</MainContentHeaderStyle>
+          <MainContentHeaderStyle>프로필 페이지</MainContentHeaderStyle>
           <MainContentSectionStyle>
-            <div>PersnoalCompact2</div>
-            <div>PersnoalCompact2</div>
-            <div>PersnoalCompact2</div>
-            <div>PersnoalCompact2</div>
-            <div>PersnoalCompact2</div>
-            <div>PersnoalCompact2</div>
-            <div>Section</div>
-            <div>Section2222222222222222222222222222222222222222222222222</div>
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section</div>
-            <div>Section</div>
+            <div onClick={() => handleNavigate("/member")}>메인메뉴로 가기</div>
           </MainContentSectionStyle>
           <MainContentFooterStyle>footer</MainContentFooterStyle>
         </MainContentWrapper>
