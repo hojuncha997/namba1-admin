@@ -19,7 +19,7 @@ export default function Router() {
     {
       path: "/",
       // element: <Navigate to="/auth/login" replace />,
-      element: <div>♡메인♡</div>,
+      element: <div>♡♡♡♡♡♡♡♡♡메인♡♡♡♡♡♡♡♡♡</div>,
     },
 
     // memberd
