@@ -1,6 +1,6 @@
 import styled from "styled-components"; // 수정: {styled} -> styled
 import logoImage from "../../assets/images/namba-logo-100.png"; // 이미지를 import
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const UpperNavStyle = styled.div`
   // 수정: styled.div를 사용하여 div 요소에 스타일 적용
@@ -54,9 +54,18 @@ const mainCategories = [
 
 const UpperNav = ({ title }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const pathname = location.pathname;
 
   const handleNavigate = (path) => {
-    navigate(path);
+    // if (window.location.pathname === path) :이렇게 직접 윈도우 객체 사용도 가능
+    // 그러나React 컴포넌트의 리렌더링 흐름과 분리되어 있어 예상치 못한 동작을 초래 가능성 존재. 따라서 되도록 useLocation 사용 권장
+
+    if (pathname === path) {
+      window.location.reload();
+    } else {
+      navigate(path);
+    }
   };
 
   return (
