@@ -22,15 +22,11 @@ function App() {
     <>
       <GlobalStyle />
       <div className="App">
-        <UpperNav title={"UpperNav"}></UpperNav>
+        <Router />
+        {/* <UpperNav title={"UpperNav"}></UpperNav>
         <Sidebar menus={"menus 안녕하세요!"}></Sidebar>
 
-        <MainContainer>
-          {/* <TestMain /> */}
-          <Router />
-        </MainContainer>
-
-        {/* <Login></Login> */}
+        <MainContainer><Router /></MainContainer> */}
       </div>
     </>
   );

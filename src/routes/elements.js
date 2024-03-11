@@ -17,6 +17,10 @@ const Loadable = (Component) => (props) =>
 // AUTH
 export const Login = Loadable(lazy(() => import("../components/auth/Login")));
 
+export const DashboardLayout = Loadable(
+  lazy(() => import("../layout/DashboardLayout"))
+);
+
 // member
 
 export const PersnoalCompact = Loadable(

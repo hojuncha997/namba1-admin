@@ -48,8 +48,8 @@ const RightMenuContainer = styled.div`
 
 const mainCategories = [
   { label: "로그인", path: "/login" },
-  { label: "멤버", path: "/member" },
-  { label: "프로필", path: "/profile" },
+  { label: "멤버", path: "/dashboard/member" },
+  { label: "프로필", path: "/dashboard/profile" },
 ];
 
 const UpperNav = ({ title }) => {
