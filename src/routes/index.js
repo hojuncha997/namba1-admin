@@ -6,8 +6,10 @@ import { Navigate, useRoutes } from "react-router-dom";
 import { PATH_DASHBOARD, PATH_MEMBER } from "./paths";
 
 import {
+  Login,
   PersnoalCompact,
   PersnoalCompact2,
+
   // Auth
 } from "./elements";
 
@@ -18,8 +20,12 @@ export default function Router() {
     // Auth
     {
       path: "/",
-      // element: <Navigate to="/auth/login" replace />,
-      element: <div>♡♡♡♡♡♡♡♡♡메인♡♡♡♡♡♡♡♡♡</div>,
+      element: <Navigate to="/login" replace />,
+      // element: <div>메인("/")</div>,
+    },
+    {
+      path: "login",
+      element: <Login />,
     },
 
     // memberd

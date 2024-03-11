@@ -56,7 +56,9 @@ const PersonalCompact = ({ children }) => {
           {/* <MainContentHeaderStyle>{children}</MainContentHeaderStyle> */}
           <MainContentHeaderStyle>프로필 페이지</MainContentHeaderStyle>
           <MainContentSectionStyle>
-            <div onClick={() => handleNavigate("/member")}>메인메뉴로 가기</div>
+            <div onClick={() => handleNavigate("/member")}>
+              멤버 페이지로 가기
+            </div>
           </MainContentSectionStyle>
           <MainContentFooterStyle>footer</MainContentFooterStyle>
         </MainContentWrapper>

@@ -47,6 +47,7 @@ const RightMenuContainer = styled.div`
 `;
 
 const mainCategories = [
+  { label: "로그인", path: "/login" },
   { label: "멤버", path: "/member" },
   { label: "프로필", path: "/profile" },
 ];
@@ -61,7 +62,7 @@ const UpperNav = ({ title }) => {
   return (
     <UpperNavStyle>
       <LogoStyle>
-        <a href="https://naver.com">
+        <a href="/login">
           <img src={logoImage} width="120px" alt="Logo" />
         </a>
       </LogoStyle>
