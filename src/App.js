@@ -12,7 +12,7 @@ import UpperNav from "./components/upperNav/UpperNav";
 import MainContainer from "./components/mainContainer/MainContainer";
 import MainContent from "./components/MainContent/MainContent";
 import Sidebar from "./components/sidebar/Sidebar";
-import Login from "./components/login/Login";
+
 import PersonalCompact from "./components/userMgmt/personalCompact/PersnoalCompact";
 
 function App() {

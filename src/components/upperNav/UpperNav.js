@@ -47,7 +47,7 @@ const RightMenuContainer = styled.div`
 `;
 
 const mainCategories = [
-  { label: "로그인", path: "/login" },
+  // { label: "로그인", path: "/login" },
   { label: "멤버", path: "/dashboard/member" },
   { label: "프로필", path: "/dashboard/profile" },
 ];
@@ -66,6 +66,12 @@ const UpperNav = ({ title }) => {
     } else {
       navigate(path);
     }
+  };
+
+  const handleLogout = () => {
+    // 로그아웃
+    navigate("/login");
+    alert("로그아웃 하였습니다.");
   };
 
   return (
@@ -88,7 +94,8 @@ const UpperNav = ({ title }) => {
         })}
       </MainCategoryContainer>
 
-      <RightMenuContainer>알림 프로필 로그아웃</RightMenuContainer>
+      <RightMenuContainer>알림 프로필</RightMenuContainer>
+      <RightMenuContainer onClick={handleLogout}>로그아웃</RightMenuContainer>
     </UpperNavStyle>
   ); // 수정: JSX 형태로 컴포넌트 반환
 };

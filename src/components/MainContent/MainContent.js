@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Login from "../login/Login";
 
 const MainContentStyle = styled.div`
   background: #fff;
