@@ -23,6 +23,10 @@ export const DashboardLayout = Loadable(
 
 // member
 
+export const DashboardHome = Loadable(
+  lazy(() => import("../components/userMgmt/DashboardHome"))
+);
+
 export const PersnoalCompact = Loadable(
   lazy(() => import("../components/userMgmt/personalCompact/PersnoalCompact"))
 );
