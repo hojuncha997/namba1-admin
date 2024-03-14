@@ -2,6 +2,7 @@ import styled from "styled-components";
 import logoImage from "../../assets/images/namba-logo-100.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../auth/useAuthContext";
 
 const LoginContainerStyle = styled.div`
   display: flex;

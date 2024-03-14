@@ -1,0 +1,30 @@
+1. 레이아웃 제작(사이드바, 네비게이션, 본문 등 큰 레이아웃)
+
+2. 로그인 페이지(/sections/auth/login.js) 생성
+
+3. 라우팅 설정 : routes디렉토리(paths.js, elements.js, index.js, useRoutes, BrowseRouter, Navigate, useNavigation)
+- npm install react-router-dom
+- routes/index.js에서 useRoutes로 Router함수를 설정하고 export.
+- 이 <Router>함수를 App.js에서 import하고 return 하여 프로젝트 전체에서 라우팅 가능토록 설정
+- App.js을 <BrowserRouter>로 감싸서 프로젝트 전체에서 라우팅 설정.(여기서는 index.js를 감쌌음.)
+- App이 직접적인 컴포넌트를 반환하지는 않지만, Router함수에 따라 "/"경로에 지정된 <Login> 컴포넌트가 반환된다.
+- 로그인에 성공하면 useNavigate를 사용하여 "/dashboard" 경로로 이동한다. 
+- "/dashboard"는 useRoutes에 지정된 경로에 따라 <DashboardLayout />를 반환한다.
+- <DashboardLayout />에는 상단 네비게이션인 <UpperNav>, 좌측에 존재하는 <SideBar>, 메뉴에 따라 본문이 보여질 <MainContainer> 컴포넌트가 존재한다.
+- 이 중 <MainContainer>는 <Outlet> 컴포넌트를 감싸고 있다. <Outlet>은 useRoutes에 지정한 경로에 따라, "/dashboard"의 하위 경로의 컴포넌트들을 동적으로 보여준다.
+- 처음에는 useRoutes에서 "/dashboard" 경로의 children 중 path가 설정되지 않은 <DashboardHome>이 자동으로 보여진다.
+
+
+
+4. 인증관련 세션 및 전체 상태를 관리하기 위한 auth설정(JwtContext.js, useAuthContext.js)
+    여기서는 axios, 초기화, 인증여부를 검증해야 한다. 그리고 axios를 사용하여 서버에서 토큰을 받고 그걸로 초기화 및 인증완료 여부를 상태로 만들어 준 뒤,
+    그걸 createContext를 사용하여 컨텍스트에 저장한 뒤, useContext를 사용하여 AuthContext로 만든 뒤 이를 다른 곳에서 임포트하여 프로젝트 전반에서 사용한다. 
+
+- 서버와의 통신 후 세션을 설정해야 하므로 axios를 다운받고 인스턴스를 만들고 함수를 가져다 쓴다. /src/utils 디렉토리 만들고 axios.js 생성
+- axios.js에서는 일반적으로 통신에 사용할 axios.create()사용하여 axisInstance를 만들고 요청인터셉터와 응답 인터셉터를 작성한다.
+- 또한 파일 전송에 대비하여 fileInstance도 생성한다. 이 녀석들 JwtContext.js등 서버 통신이 필요한 곳에서 가져다 쓰는 것이다.
+- 참고로 axios.js에서 만든 함수들은 서버 주소가 필요한데, 이건 .env 파일에 작성한 상수를 /src/config-global.js에서 상수로 저장하고 다시 axios.js에서 가져다 쓰는 것이다.
+
+
+
+
