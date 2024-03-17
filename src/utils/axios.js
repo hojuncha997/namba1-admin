@@ -1,8 +1,7 @@
 import axios from "axios";
 
-// import {HOST_API_KEY} from '../config-global'; 나중에 만들 것임. 실제로는 .env의 상수이다.
-
-const HOST_API_KEY = "https://localhost:8080";
+import { HOST_API_KEY } from "../config-global";
+// const HOST_API_KEY = "https://localhost:8080";
 
 // 일반적인 http통신을 위한 객체
 const axiosInstance = axios.create({
