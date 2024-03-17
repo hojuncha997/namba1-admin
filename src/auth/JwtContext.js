@@ -100,7 +100,24 @@ AuthProvider.propTypes = {
   children: PropTypes.node,
 };
 
-export const AuthProvider = ({ children }) => {
+export function AuthProvider({ children }) {
+  // export const AuthProvider = ({ children }) => {
+  // Cannot access 'AuthProvider' before initialization 에러가 발생.
+
+  /**
+  함수 선언 VS. 함수 표현
+  export function AuthProvider({ children }) { ... } 형태로 함수를 선언하면, 
+  JavaScript 엔진은 이 함수 선언을 호이스팅하여 스크립트 실행 전에 메모리에 할당한다. 이로 인해,
+  모듈을 로딩하는 동안 AuthProvider가 초기화되고, 다른 모듈이나 컴포넌트에서 이를 임포트할 때 이미 초기화된 상태가 된다.
+
+  화살표 함수의 한계: 
+  반면, export const AuthProvider = ({ children }) => { ... }와 같은 화살표 함수 표현식은 변수에 할당되는 형태이므로,
+  해당 변수 선언이 코드 흐름에서 처리될 때까지 함수가 초기화되지 않는다. 만약 다른 모듈이 이 함수를 임포트하고, 
+  임포트하는 모듈이 화살표 함수가 할당되기 전에 실행되려고 한다면, 
+  "Cannot access 'AuthProvider' before initialization"와 같은 초기화 문제가 발생할 수 있다.
+  
+ */
+
   /**
    * !!!!!!!
    * 여기서 생성한 컨텍스트 값(전역 상태값)을 전역에서 사용하기 위해 App.js를,
@@ -117,7 +134,7 @@ export const AuthProvider = ({ children }) => {
 
   const initialize = useCallback(async () => {
     /*
-    이 initialize 함수의 주 목적은 브라우저의 로컬 스토리지에 저장된 토큰을 사용하여  
+    이 initialize 함수의 주 목적은 브라우저의 로컬 스토리지에 저장된 토큰을 사용하여
     사용자가 이미 로그인했는지 여부를 자동으로 확인하고, 해당 사용자가 로그인한 상태를 유지할 수 있도록 하는 것이다.
     이 과정을 통해, 사용자가 웹 애플리케이션을 재방문하거나 페이지를 새로고침할 때 마다, 로그인 상태를 유지할 수 있다.
     */
@@ -249,4 +266,4 @@ export const AuthProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
-};
+}
