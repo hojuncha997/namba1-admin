@@ -192,15 +192,23 @@ export function AuthProvider({ children }) {
   }, [initialize]);
 
   // LOGIN
-  const login = useCallback(async (email, password) => {
-    const response = await axios.post("/api/account/login", {
-      email,
-      password,
-    });
+  // const login = useCallback(async (email, password) => {
+  // const response = await axios.post("/api/account/login", {
+  const login = useCallback(async (id, password) => {
+    const data = { user_id: id, passwd: password };
+    // const response = await axios.post("/auth/login", {
+    //   email,
+    //   password,
+    // });
 
-    const { accessToken, user } = response.data;
+    const response = await axios.post("/auth/login", data);
+    console.log(response);
 
-    setSession(accessToken);
+    // const { accessToken, user } = response.data;
+    const { access_token, user } = response.data;
+
+    // setSession(accessToken);
+    setSession(access_token);
 
     dispatch({
       type: "LOGIN",
@@ -208,6 +216,9 @@ export function AuthProvider({ children }) {
         user,
       },
     });
+
+    // 호출한 곳으로 값 반환
+    return response;
   }, []);
 
   // REGISTER

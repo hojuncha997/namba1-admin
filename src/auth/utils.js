@@ -67,6 +67,7 @@ export const setSession = (accessToken) => {
 
     // 토큰 만료 카운터에 토큰 집어넣기
     const { exp } = jwtDecode(accessToken);
+    console.log("토큰만료시간: ", exp);
     tokenExpired(exp);
   } else {
     localStorage.removeItem("accessToken");

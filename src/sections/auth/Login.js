@@ -35,6 +35,11 @@ const InputFieldStyle = styled.div`
 const LogoStyle = styled.div``;
 
 const Login = () => {
+  // 로그인 함수 가져오기
+  const { login, isAuthenticated, isInitialized } = useAuthContext();
+  console.log("isAuthenticated: ", isAuthenticated);
+  console.log("isInitialized: ", isInitialized);
+
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -49,14 +54,28 @@ const Login = () => {
     setPassword(event.target.value);
   };
 
-  const handleLoginButton = () => {
-    if (id === "hjcha" && password === "1111") {
-      alert("로그인 성공");
-      navigate("/dashboard");
-    } else {
-      alert("로그인 정보가 맞지 않습니다.");
-      return;
+  const handleLoginButton = async () => {
+    try {
+      console.log("버튼 실행:", id, password);
+      const response = await login(id, password);
+      console.log(response);
+      if (response.data.code === 1000) {
+        navigate("/dashboard");
+      } else {
+        alert("로그인 정보가 맞지 않습니다.");
+        return;
+      }
+    } catch (error) {
+      console.error(error);
     }
+
+    // if (id === "hjcha" && password === "1111") {
+    //   alert("로그인 성공");
+    //   navigate("/dashboard");
+    // } else {
+    //   alert("로그인 정보가 맞지 않습니다.");
+    //   return;
+    // }
   };
 
   return (
