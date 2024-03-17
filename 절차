@@ -33,7 +33,63 @@
 - tokenExpired 함수는  setTimeout 함수를 사용하여 토큰의 만료시간을 측정하고, 만료되면 로그아웃 시키는 로직이 이 안에 들어있기 때문이다.
 
 
+#
+- 이제 본격적으로 src/auth/JwtContext를 작성한다. src/utils/axios와 src/auth/utils.js를 임포트 해주면, 초기 상태값을 만들어준다.
+- 이 초기값은 useReducer훅의 두 번째 파라미터로 들어간다. 두 번째로는 리듀서로 사용할 reducer함수를 작성해준다. 이 함수는 useReducer함수의 첫 번째 함수로 들어간다.
+- useReducer는 기본적으로 이 상태값을 reducer함수에 전달하며, dispatch를 호출하여 값을 바꿀 때마다 리듀서 함수에 전달하여 상태값을 변경하도록 만든다.
 
+- 두 번째로는 컨텍스트를 만든다. createContext 함수를 사용하여 기본값이 null인 함수를 만든다. AuthContext.Provider의 value속성을 통해 값을 바꿔줄 것이다.
 
+- 세 번째로는 AuthProvider 함수를 만든다. 이 함수 내에서 useReducer 함수를 생성한다.
+    const [state, dispatch] = useReducer(reducer, initialState);
+  이렇게 넣어준다. 여기에는 아래와 같은 함수들이 작성돼 있다.
+  
+    -- Initialize: 초기화 함수. 토큰값 존재/유효 여부를 확인하여 그 결과를 dispatch함수에 action으로 담아 초기 상태값을 바꾼다.
+    -- login: API 통신을 통해 확인하여 그 결과를 dispatch함수를 사용하여 action을 전달하고 상태값을 변경시킨다.
+        또한 서버로부터 획득한 토큰을 setSession에 넣어 토큰을 localStorage에 넣고, axios 기본설정을 하며, 백그라운드에서 토큰 만료시간을 계속 확인하도록 한다.
+    -- register: API에게 가입 정보를 넣어 날리고, dispatch 호출하여 상태를 바꾼다.(이건 수정 필요)
+    -- logout: setSession(null) 하여 세션과 토큰을 날려버리고 dispatch를 하여 인가 상태를 바꿔버린다.
+
+    -- memoizedValue: useMemo 훅을 사용한 함수로서, 캐쉬할 정보를 담는다. 최종 상태값들과 함수, 임의로 넣은 값들이 들어 있으며,
+        추후 useAuthContext를 통해 쉽게 꺼내서 사용할 수 있도록 만든 것이다.
+
+이 AuthProvider 함수가 최종적으로 리턴하는 것은 아래의 형태이다.
+
+  return (
+    <AuthContext.Provider value={memoizedValue}>
+      {children}
+    </AuthContext.Provider>
+  );
+
+AuthContext.Provider 컴포넌트의 value 속성을 사용해 memoizedValue를 넣어준다.
+그렇게 하면 이 컴포넌트로 감싼 하위 컴포넌트들은 쉽게 memoizedValue의 값을 꺼내어 사용할 수 있다.
+이렇게 되기 위해선느 App.js를 AuthContext.Provider로 감싸거나, App.js의 반환값을 AuthContext.Provider로 감싸야 한다.
+여기서는 가장 바깥에 AuthContext.Provider야 한다.
+하지만 우리는 이 값을 AuthProvider 함수로 감쌌으므로 아래와 같이 해주었다.
+
+function App() {
+  return (
+    <AuthProvider>
+      <BrowserRouter>
+        <GlobalStyle />
+        <Router />
+      </BrowserRouter>
+    </AuthProvider>
+  );
+}
+
+이제 App아래의 전역에서 memoizedValue를 사용할 수 있다.
+
+그리고 useAuthContext를 만들어 주었다. 이 커스텀 훅에서는 아래와 같이 useContext를 사용한다.
+  const context = useContext(AuthContext);
+그리고 context를 반환한다. 따라서 다른 컴포넌트에서 consumer를 사요하지 않고도 보다 쉬운 방법으로 context를 가져다 쓸 수 있으며,
+context의 내용이 바뀌더라도, 즉 firebaseContext가 되더라도 적용만 하면 되므로 객체지향적으로 사용할 수 있다.
+
+src/sections/auth/Login.js 컴포넌트에서는 
+
+import { useAuthContext } from "../../auth/useAuthContext";
+...
+  const { login, isAuthenticated, isInitialized } = useAuthContext();
+이런 식으로 전역 값과 함수를 가져다 쓸 수 있었다.
 
 
