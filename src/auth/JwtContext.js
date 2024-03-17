@@ -1,8 +1,15 @@
 import PropTypes from "prop-types";
-import axios from "../utils/axios";
-import localStorageAvailable from "../utils/localstorageAvailable";
+import { axios } from "../utils/axios";
+import localStorageAvailable from "../utils/localStorageAvailable";
+
 import { isValidToken, setSession } from "./utils";
-import { createContext, useCallback, useEffect, useReducer } from "react";
+import {
+  createContext,
+  useCallback,
+  useEffect,
+  useReducer,
+  useMemo,
+} from "react";
 
 // 초기 상태값: useReducer 함수의 두 번째 파라미터로 제공된다. 첫 번째 파라미터인 리듀서 함수의
 const initialState = {
@@ -82,13 +89,25 @@ const reducer = (state, action) => {
 
    AuthContext.Provider의 속성을 통해 value를 넣어줘야만 하위 컴포넌트들과 동적으로 값을 공유할 수 있다.
  */
+
+// ----------------------------------------------------------------------
+
 export const AuthContext = createContext(null);
+
+// ----------------------------------------------------------------------
 
 AuthProvider.propTypes = {
   children: PropTypes.node,
 };
 
 export const AuthProvider = ({ children }) => {
+  /**
+   * !!!!!!!
+   * 여기서 생성한 컨텍스트 값(전역 상태값)을 전역에서 사용하기 위해 App.js를,
+   * 또는 App.js가 리턴하는 컴포넌트들을 <AuthProvider>로 감싸줄 필요가 있다.
+   *
+   */
+
   // useReducer 사용: 앞서 생성한 리듀서 함수와, 초기값을 파라미터로 넣어준다.
   // dispatch는 액션 객체를 인자로 받아 해당 액션에 정의된 타입에 따라 상태를 어떻게 변경할지 결정하는 로직(리듀서 함수)을 실행한다.
   const [state, dispatch] = useReducer(reducer, initialState);
