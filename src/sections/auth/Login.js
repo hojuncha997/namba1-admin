@@ -37,20 +37,18 @@ const LogoStyle = styled.div``;
 const Login = () => {
   // 로그인 함수 가져오기
   const { login, isAuthenticated, isInitialized } = useAuthContext();
-  console.log("isAuthenticated: ", isAuthenticated);
-  console.log("isInitialized: ", isInitialized);
+  // console.log("isAuthenticated: ", isAuthenticated);
+  // console.log("isInitialized: ", isInitialized);
 
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleId = (event) => {
-    console.log(event.target.value);
     setId(event.target.value);
   };
 
   const handlePassword = (event) => {
-    console.log(event.target.value);
     setPassword(event.target.value);
   };
 
