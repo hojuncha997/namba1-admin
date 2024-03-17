@@ -15,6 +15,7 @@ export const useAuthContext = () => {
       "useAuthContext 컨텍스트는 AuthProvider 내에서 사용되어야 한다."
     );
   }
+  return context;
 };
 
 // export const useAuthContext = () => {
