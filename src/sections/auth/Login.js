@@ -4,6 +4,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../auth/useAuthContext";
 
+const OuterContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 세로 중앙 정렬 */
+  align-items: center; /* 가로 중앙 정렬 */
+  height: 100vh; /* 전체 화면 높이 */
+`;
+
 const LoginContainerStyle = styled.div`
   display: flex;
   flex-direction: column;
@@ -11,11 +19,14 @@ const LoginContainerStyle = styled.div`
   align-items: center;
   flex-wrap: wrap;
 
-  width: 500px;
-  height: 300px;
+  width: 30%;
+  height: 20%;
+
+  max-width: 20%;
+  min-width: 250px;
+
   /* background-color: var(--namba1-yellow); */
   background-color: var(#fff);
-  margin-top: 30vh;
   margin-left: auto;
   margin-right: auto;
   border-radius: 10px;
@@ -32,7 +43,24 @@ const InputFieldStyle = styled.div`
   margin-bottom: 10px; /* 각 inputField 간에 여백 추가 */
 `;
 
-const LogoStyle = styled.div``;
+const ButtonWrapper = styled.button`
+  width: 100%;
+`;
+
+const LogoStyle = styled.div`
+  width: 100%; /* 또는 부모 요소에 맞게 조정 */
+  max-width: 200px; /* 이미지의 최대 크기를 제한하고 싶은 경우 설정 */
+  height: auto; /* 이미지의 높이를 자동으로 조정하여 비율을 유지 */
+
+  img {
+    width: 100%; /* 이미지 너비를 부모 요소의 100%로 설정 */
+    height: auto; /* 이미지의 높이를 자동으로 조정하여 비율을 유지 */
+  }
+`;
+
+const FlexContainer = styled.div`
+  display: flex;
+`;
 
 const Login = () => {
   // 로그인 함수 가져오기
@@ -77,32 +105,35 @@ const Login = () => {
   };
 
   return (
-    <LoginContainerStyle>
-      <LogoStyle>
-        <img src={logoImage}></img>
-      </LogoStyle>
-      <CredentialStyle>
-        <InputFieldStyle>
-          <label>
-            아이디
-            <input type="text" onChange={(event) => handleId(event)}></input>
-          </label>
-        </InputFieldStyle>
-        <InputFieldStyle>
-          <label>
-            비밀번호
+    <OuterContainer>
+      <LoginContainerStyle>
+        <LogoStyle>
+          <img src={logoImage}></img>
+        </LogoStyle>
+        <CredentialStyle>
+          <InputFieldStyle>
+            <input
+              type="text"
+              onChange={(event) => handleId(event)}
+              placeholder="아이디"
+            ></input>
+          </InputFieldStyle>
+          <InputFieldStyle>
             <input
               type="password"
               onChange={(event) => handlePassword(event)}
+              placeholder="비밀번호"
             ></input>
-          </label>
-        </InputFieldStyle>
+          </InputFieldStyle>
 
-        <div>
-          <button onClick={handleLoginButton}>로그인</button>
-        </div>
-      </CredentialStyle>
-    </LoginContainerStyle>
+          <FlexContainer>
+            <ButtonWrapper onClick={handleLoginButton}>로그인</ButtonWrapper>
+            <ButtonWrapper onClick={handleLoginButton}>회원가입</ButtonWrapper>
+          </FlexContainer>
+        </CredentialStyle>
+        아이디 또는 비밀번호 찾기
+      </LoginContainerStyle>
+    </OuterContainer>
   );
 };
 
