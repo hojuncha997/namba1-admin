@@ -17,6 +17,10 @@ const Loadable = (Component) => (props) =>
 // AUTH
 export const Login = Loadable(lazy(() => import("../sections/auth/Login")));
 
+export const Register = Loadable(
+  lazy(() => import("../sections/auth/Register"))
+);
+
 export const DashboardLayout = Loadable(
   lazy(() => import("../layout/DashboardLayout"))
 );

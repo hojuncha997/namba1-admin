@@ -104,6 +104,10 @@ const Login = () => {
     // }
   };
 
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
+
   return (
     <OuterContainer>
       <LoginContainerStyle>
@@ -131,7 +135,8 @@ const Login = () => {
             <ButtonWrapper onClick={handleLoginButton}>회원가입</ButtonWrapper>
           </FlexContainer>
         </CredentialStyle>
-        아이디 또는 비밀번호 찾기
+        <span>아이디 또는 비밀번호 찾기</span>
+        <span onClick={() => handleNavigate("/register")}>회원가입</span>
       </LoginContainerStyle>
     </OuterContainer>
   );

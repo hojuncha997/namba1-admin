@@ -9,6 +9,7 @@ import {
   AuthGuard,
   GuestGuard,
   Login,
+  Register,
   DashboardLayout,
   DashboardHome,
   PersnoalCompact,
@@ -34,6 +35,10 @@ export default function Router() {
           <Login />,
         </GuestGuard>
       ),
+    },
+    {
+      path: "register",
+      element: <Register />,
     },
     {
       path: "dashboard",
