@@ -21,6 +21,9 @@ export const DashboardLayout = Loadable(
   lazy(() => import("../layout/DashboardLayout"))
 );
 
+export const GuestGuard = Loadable(lazy(() => import("../auth/GuestGuard")));
+
+export const AuthGuard = Loadable(lazy(() => import("../auth/AuthGuard")));
 // member
 
 export const DashboardHome = Loadable(

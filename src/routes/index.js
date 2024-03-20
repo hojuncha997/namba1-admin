@@ -6,6 +6,8 @@ import { Navigate, useRoutes } from "react-router-dom";
 import { PATH_DASHBOARD, PATH_MEMBER } from "./paths";
 
 import {
+  AuthGuard,
+  GuestGuard,
   Login,
   DashboardLayout,
   DashboardHome,
@@ -27,11 +29,19 @@ export default function Router() {
     },
     {
       path: "login",
-      element: <Login />,
+      element: (
+        <GuestGuard>
+          <Login />,
+        </GuestGuard>
+      ),
     },
     {
       path: "dashboard",
-      element: <DashboardLayout />,
+      element: (
+        <AuthGuard>
+          <DashboardLayout />
+        </AuthGuard>
+      ),
       children: [
         // { path: "/", element: <DashboardHome />, index: true },
         // 위와 같이 하면 오류 발생. 자식 라우트에서 절대 경로(/)를 사용했기 때문. index: true를 사용하는 경우, 자식 라우트의 path 속성에 절대 경로(/)를 지정하지 않고, 대신 경로를 비워두어야 함.
