@@ -41,7 +41,7 @@ const Sidebar = ({ menus }) => {
         <div>- 개인중형</div>
         <div>- 개인대형</div>
         <div>- 법인매매</div>
-        <div>- 주선면허</div>
+        <div>- 블로그</div>
       </SubMenuConainer>
     </SidebarStyle>
   );

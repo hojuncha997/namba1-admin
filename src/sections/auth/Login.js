@@ -132,7 +132,6 @@ const Login = () => {
 
           <FlexContainer>
             <ButtonWrapper onClick={handleLoginButton}>로그인</ButtonWrapper>
-            <ButtonWrapper onClick={handleLoginButton}>회원가입</ButtonWrapper>
           </FlexContainer>
         </CredentialStyle>
         <span>아이디 또는 비밀번호 찾기</span>
