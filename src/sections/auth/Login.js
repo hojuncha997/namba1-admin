@@ -25,6 +25,9 @@ const LoginContainerStyle = styled.div`
   max-width: 20%;
   min-width: 250px;
 
+  max-height: 20%;
+  min-height: 300px;
+
   /* background-color: var(--namba1-yellow); */
   background-color: var(#fff);
   margin-left: auto;
