@@ -35,6 +35,28 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+
+
+
+
+  /* 텍스트, 숫자, 비밀번호 입력 필드에 공통 스타일 적용 */
+  input[type="text"],
+  input[type="number"],
+  input[type="password"] {
+    background-color: var(--text-grey); /* 배경색 */
+    color: var(--color-dark); /* 글자색 */
+    padding: 10px; /* 내부 여백 */
+    margin-bottom: 15px; /* 요소 하단 여백 */
+    border: 1px solid var(--main-color); /* 테두리 */
+    border-radius: 5px; /* 테두리 둥글기 */
+  
+    /* 추가적인 스타일링 */
+    &:focus {
+      border-color: var(--namba1-yellow); /* 포커스 상태에서 테두리 색상 변경 */
+      outline: none; /* 기본 아웃라인 제거 */
+    }
+  }
+
 }
 `;
 

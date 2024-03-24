@@ -5,7 +5,6 @@ const CenterWrapper = styled.div`
   margin: auto;
   min-width: 30%;
   max-width: 40%;
-  border: 3px solid black;
   border-radius: 20px;
   z-index: 999;
   overflow: auto;
@@ -70,6 +69,7 @@ const Register = ({ children }) => {
             {/* require함수에 인풋 설정 */}
             {/* <label>이름</label> */}
             <input
+              type="text"
               {...register("firstName", { required: true, maxLength: 20 })}
               style={{ display: "block", width: 500 }}
               placeholder="이름"
