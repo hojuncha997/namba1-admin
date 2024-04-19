@@ -42,6 +42,7 @@ export const tokenExpired = (exp) => {
   //   여기서 exp는 초단위기 때문에 밀리초로 변환하기 위해 1000을 곱한다
   const timeLeft = exp * 1000 - currentTime;
 
+  // 타이머를 취소하는 함수
   clearTimeout(expiredTimer);
 
   // 만료됐을 때 실행
